@@ -1,0 +1,109 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.kakeru{
+  margin-top:100px;
+  width:200px;
+  height: 166px;  
+}
+.recommend-list{
+  float:left;
+}
+
+
+.section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width:300px;
+  height:300px;
+}
+
+.recommend img{
+  width:225px;
+  height: 90px;
+}
+
+.card img{
+  max-height: 60%;
+  overflow: hidden;
+}
+
+.menu img{
+  width:200px;
+}
+
+.menu .container{
+  width:1000px;
+  margin:auto;
+}
+
+.beer-menu img{
+  width:130px;
+}
+
+.welcome{
+  padding-top:100px;
+}
+
+.title-contents{
+  margin-top:110px;
+}
+.title-contents img{
+  width:200px;
+}
+
+.title-food{
+  margin-top:110px;
+}
+.title-food img{
+  width:160px;
+}
+
+.error{
+   margin-top:110px;
+   width:800px;
+   margin-left: auto;
+   margin-right: auto;
+
+}
+@media(max-width:1000px){
+  .recommend{
+    width:50%;
+  }
+  .kakeru{
+    width:125px;
+    height: 104px;
+    margin: 0;
+  }
+
+  .menu .col-sm{
+  margin-top:10px;
+  }
+}
+@media(max-width:570px){
+  .recommend{
+    width:50%;
+  }
+   .kakeru{
+    width:125px;
+    height: 104px;
+    margin:0;
+  }
+  .menu .col-sm{
+  margin-top:10px;
+  }
+
+}
+
