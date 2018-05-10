@@ -72,12 +72,77 @@
 }
 
 .error{
-   margin-top:110px;
-   width:800px;
-   margin-left: auto;
-   margin-right: auto;
-
+   margin-top:150px;
+   width:100%;
+   padding-left: auto;
+   padding-right: auto;
 }
+
+.regist {
+  margin-top:110px;
+  max-width: 960px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-top-gray { border-top-color: #adb5bd; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-condensed { line-height: 1.25; }
+
+.userconfirm{
+  margin: auto;
+}
+
+.signin-contents{
+    display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 200px;
+  padding-bottom: 40px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.my-orange {
+  color: #fecb81
+  }
+
+.buyhistory{
+  padding-top: 120px;
+  width: 60%;
+  margin: auto;
+}
+
 @media(max-width:1000px){
   .recommend{
     width:50%;
@@ -90,6 +155,9 @@
 
   .menu .col-sm{
   margin-top:10px;
+  }
+  .buyhistory{
+    width:95%;
   }
 }
 @media(max-width:570px){
@@ -106,4 +174,36 @@
   }
 
 }
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition-timing-function: ease-in-out;
+    transition-duration: .3s;
+    transition-property: left, visibility;
+  }
+  .offcanvas-collapse.open {
+    left: 0;
+    visibility: visible;
+  }
+}
 
+.text-black-50 { color: black; }
+
+.bg-orange { background-color:  #fecb81; }
+
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }

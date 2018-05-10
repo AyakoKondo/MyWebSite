@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ユーザー情報更新</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">	
+  <link href="Materialize/css/sticky-footer.css" rel="stylesheet">
+  <link href="Materialize/css/style.css" rel="stylesheet">
+</head>
+
+
+<body class="bg-light">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="Materialize/illust/logo.png" width="125px" height="70px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            検索する
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="beer-search.html">ビールから <i class="fas fa-beer"></i></a>
+            <a class="dropdown-item" href="wine-search.html">ワインから <i class="fas fa-glass-martini"></i></a>
+            <a class="dropdown-item" href="other-liquor.html">その他のお酒から</a>
+            <a class="dropdown-item" href="food-search.html">おつまみから <i class="fas fa-utensils"></i></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><!--<i class="far fa-comments"></i>-->おすすめ</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><!--<i class="fas fa-user-plus fa-lg"></i>-->新規登録</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-sign-in-alt fa-lg fa-fw"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="far fa-user fa-lg fa-fw"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-cart-arrow-down fa-lg fa-fw"></i></a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-sign-out-alt fa-lg fa-fw"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container regist">
+    <div class="py-5 text-center">
+      <h2>ユーザー情報更新</h2>
+    </div>
+    
+    <div class="col-md-8 userconfirm">
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+              <label for="lastName">苗字</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="田中" required>
+              <div class="invalid-feedback">
+                苗字を入力してください。
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="firstname">名前</label>
+              <input type="text" class="form-control" id="firstname" placeholder="" value="太郎" required>
+              <div class="invalid-feedback">
+                名前を入力してください。
+              </div>
+            </div>
+          </div>
+
+ <!--         <div class="mb-3">
+            <label for="username">ユーザ名</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="username" placeholder="" required>
+              <div class="invalid-feedback" style="width: 100%;">
+                ユーザ名を入力してください。
+              </div>
+            </div>
+          </div>
+        -->
+        <div class="mb-3">
+          <label for="email">メールアドレス（ログインID）</label>
+          <input type="text" class="form-control" id="email" placeholder="you@example.com" value="tanaka@gmail.com" required>
+          <div class="invalid-feedback">
+            メールアドレスを入力してください。
+          </div>
+        </div>
+
+         <div class="mb-3">
+          <label for="tel">電話番号</label>
+          <input type="text" class="form-control" id="tel" placeholder="ハイフンなしで入力してください。" value="123456789" required>
+          <div class="invalid-feedback">
+            電話番号を入力してください。
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-3 mb-3">
+            <label for="zip">〒郵便番号</label>
+            <input type="text" class="form-control" id="zip" placeholder="" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');" value="1234567" required>
+            <div class="invalid-feedback">
+              郵便番号を入力してください。
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="address">ご住所</label>
+          <input type="text" name="addr11" class="form-control" id="address" placeholder="" value="田中の住所" required>
+          <div class="invalid-feedback">
+            住所を入力してください。
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="birthdate">生年月日</label>
+          <input type="date" class="form-control" id="birthdate" placeholder="" value="2000-01-01" required>
+          <div class="invalid-feedback">
+            生年月日を入力してください。
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="birthdate">パスワード</label>
+          <input type="password" class="form-control" id="password" placeholder="">
+          <div class="invalid-feedback">
+            パスワードを入力して下さい。
+          </div>
+        </div> 
+        <div class="mb-3">
+          <label for="birthdate">パスワード（確認）</label>
+          <input type="password" class="form-control" id="password" placeholder="">
+          <div class="invalid-feedback">
+            パスワード(確認)を入力して下さい。
+          </div>
+        </div>
+
+
+        <h4 class="mb-3">お支払い方法</h4>
+
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+            <label class="custom-control-label" for="credit">クレジットカード</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="debit">代金引換</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">名前</label>
+            <input type="text" class="form-control" id="cc-name" placeholder="" value="TARO TANAKA">
+            <small class="text-muted">カードに表示されているフルネーム</small>
+            <div class="invalid-feedback">
+              カードの名前が必要です。
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">クレジットカード番号</label>
+            <input type="text" class="form-control" id="cc-number" placeholder="" value="********1234">
+            <div class="invalid-feedback">
+              クレジットカード番号が必要です。
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-expiration">有効期限</label>
+            <input type="month" class="form-control" id="cc-expiration" placeholder="" value="2030-01">
+            <div class="invalid-feedback">
+              有効期限が必要です。
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-info btn-lg btn-block" type="submit">入力確認画面へ進む</button>
+    </div>
+  </div>
+
+
+  <br>
+  <br>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">Made by ayako</span>
+    </div> 
+  </footer>
+
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="../../../../assets/js/vendor/popper.min.js"></script>
+      <script src="../../../../dist/js/bootstrap.min.js"></script>
+      <script src="../../../../assets/js/vendor/holder.min.js"></script>
+      <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
+  </html>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>システムエラー</title>
+	<title>カート確認</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">	
   <link href="Materialize/css/sticky-footer.css" rel="stylesheet">
@@ -56,29 +56,73 @@
     </div>
   </nav>
 
-  <!--エラーページ-->
-  <div class="container">
-    <div class="error">
-     <div class="alert alert-danger" role="alert">
-      <h4 class="alert-heading">システムエラーが発生しました</h4>
-      <p>エラーメッセージ</p>
-      
+  <!--買い物かご-->
+  <div class="container-fluid buyhistory">
+    <div class="row center">
+      <h5 class=" col s12 light">買い物かご</h5>
+    </div>
+    <div class="section">
+      <form>
+        <div class="row">
+          <div class="col s12">
+            <div class="col s6 center-align">
+              <button class="btn btn-primary col s6 offset-s3" type="submit" name="action">
+                削除<i class="fas fa-trash-alt fa-fw"></i>
+              </button>
+            </div>
+            <div class="col s6 center-align">
+              <a href="Buy" class="btn btn btn-warning col s6 offset-s3">レジに進む<i class="fas fa-shopping-basket fa-fw"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <%
+            int i = 0;
+            for (ItemDataBeans item : cart) {
+              i++;
+          %>
+          <div class="col s12 m3">
+            <div class="card">
+              <div class="card-image">
+                <a href="Item?item_id=<%=item.getId()%>"><img src="<%="img/" + item.getFileName()%>"> </a>
+              </div>
+              <div class="card-content">
+                <span class="card-title"><%=item.getName()%></span>
+                <p><%=item.getPrice()%>円
+                </p>
+                <p>
+                  <input type="checkbox" id="<%=i%>" name="delete_item_id_list" value="<%=item.getId()%>" /> <label for=<%=i%>>削除</label>
+                </p>
+              </div>
+            </div>
+          </div>
+          <%
+            if (i % 4 == 0) {
+          %>
+        </div>
+        <div class="row">
+          <%
+            }
+          %>
+          <%
+            }
+          %>
+        </div>
+      </form>
     </div>
   </div>
-</div>
+    <br><br><br>
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Made by ayako</span>
+      </div> 
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
 
-<footer class="footer">
-  <div class="container">
-    <span class="text-muted">Made by ayako</span>
-  </div> 
-</footer>
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
-
-</body>
-</html>
+  </body>
+  </html>
