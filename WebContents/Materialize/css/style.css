@@ -281,11 +281,11 @@ input[type=checkbox] {
 }
 
 .itemdetail{
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 .itemdetail img{
- max-width:350px;
+ max-width:400px;
 }
 
 .itemcard{
@@ -419,4 +419,8 @@ input[type=checkbox] {
 .menuicon img{
   width:160px;
   height: 160px;
+}
+
+.text-right{
+  float:right;
 }
