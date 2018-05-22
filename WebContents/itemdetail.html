@@ -28,10 +28,7 @@
 
       <div class="mb-3">
         <label for="itemname">商品名</label>
-        <input type="text" class="form-control" id="itemname" placeholder="" value="">
-        <div class="invalid-feedback">
-          商品名を入力してください。
-        </div>
+        <input type="text" class="form-control" id="itemname" placeholder="" value="商品" readonly>
       </div>
 
       <div class="mb-3">
@@ -90,24 +87,24 @@
 
         <div class="col-md-3 mb-3">
           <label for="alchol">アルコール度数</label>
-          <input type="text" class="form-control" id="alchol" placeholder="">
+          <input type="text" class="form-control" id="alchol" placeholder="" readonly>
         </div>
       </div>
       <div class="mb-3">
         <label for="price">価格</label>
-        <input type="text" name="price" class="form-control" id="peice" placeholder="" value="">
+        <input type="text" name="price" class="form-control" id="peice" placeholder="" value="" readonly>
       </div>
       <div class="mb-3">
         <div class="form-group">
           <label for="itemdetail">商品詳細</label>
-          <textarea class="form-control" id="itemdetail" rows="3"></textarea>
+          <textarea class="form-control" id="itemdetail" rows="3" readonly></textarea>
         </div>
       </div>
       <div class="mb-3">
         <div class="form-group">
           <label for="itemdetail">商品画像（ファイル名）:
           </label>
-           <input type="file" name="" size="">
+           <input type="file" name="" size="" readonly>
         </div>
       </div>
      
@@ -115,6 +112,7 @@
       
 
       <hr class="mb-4">
+      <form>
       <div class="container automargin">
         <div class="row">
           <div class="center-align">
@@ -126,7 +124,7 @@
         </div>
         </div>
     </div>
-    
+    </form>
  
 </div>
 </div>
