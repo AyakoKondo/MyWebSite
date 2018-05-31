@@ -106,7 +106,7 @@ public class UserDAO {
 	 * @throws SQLException
 	 *             呼び出し元にcatchさせるためスロー
 	 */
-	public static UserDataBeans getUserDataBeansByUserId(int userId) throws SQLException {
+/*	public static UserDataBeans getUserDataBeansByUserId(int userId) throws SQLException {
 		UserDataBeans udb = new UserDataBeans();
 		Connection con = null;
 		PreparedStatement st = null;
@@ -145,7 +145,7 @@ public class UserDAO {
 	 * @throws SQLException
 	 *             呼び出し元にcatchさせるためにスロー
 	 */
-	public static void updateUser(UserDataBeans udb) throws SQLException {
+/*	public static void updateUser(UserDataBeans udb) throws SQLException {
 		// 更新された情報をセットされたJavaBeansのリスト
 		UserDataBeans updatedUdb = new UserDataBeans();
 		Connection con = null;

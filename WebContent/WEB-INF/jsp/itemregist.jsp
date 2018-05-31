@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans" %>
+
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,6 +11,10 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">	
   <link href="Materialize/css/sticky-footer.css" rel="stylesheet">
   <link href="Materialize/css/style.css" rel="stylesheet">
+  <%
+	String validationMessage = (String) request.getAttribute("validationMessage");
+	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
+%>
 </head>
 
 
@@ -20,15 +27,15 @@
     </div>
     
     <div class="col-md-8 userconfirm">
-      <form class="needs-validation">
+      <form class="needs-validation" action = "ItemRegistConfirm" method="post">
        <div class="mb-3">
-        <label class="radio-inline"><input type="radio" name="optradio"> 飲み物</label>
-        　<label class="radio-inline"><input type="radio" name="optradio"> 食べ物</label>
+        <label class="radio-inline"><input type="radio" name="category_id" value = "1"> 飲み物</label>
+        　<label class="radio-inline"><input type="radio" name="category_id" value = "2"> 食べ物</label>
       </div>
 
       <div class="mb-3">
         <label for="itemname">商品名</label>
-        <input type="text" class="form-control" id="itemname" placeholder="" value="" required>
+        <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
         <div class="invalid-feedback">
           商品名を入力してください。
         </div>
@@ -36,66 +43,66 @@
 
       <div class="mb-3">
         <i>商品の種類を選択　</i>
-        <select class="selectpicker">
+        <select class="selectpicker" name="item_category_id">
 
           <optgroup label="ビール">
-            <option>エール系</option>
-            <option>ラガー系</option>
-            <option>黒ビール系</option>
-            <option>ビールその他</option>
+            <option value="1">エール系</option>
+            <option value="2">ラガー系</option>
+            <option value="3">黒ビール系</option>
+            <option value="4">ビールその他</option>
           </optgroup>
           <optgroup label="ワイン">
-            <option>赤</option>
-            <option>白</option>
-            <option>ロゼ</option>
-            <option>スパークリング</option>
-            <option>ワインその他</option>
+            <option value="5">赤</option>
+            <option value="6">白</option>
+            <option value="7">ロゼ</option>
+            <option value="8">スパークリング</option>
+            <option value="9">ワインその他</option>
           </optgroup>
           <optgroup label="その他の飲み物">
-            <option>日本酒</option>
-            <option>果実酒</option>
-            <option>焼酎</option>
-            <option>飲み物その他</option>
+            <option value="10">日本酒</option>
+            <option value="11">果実酒</option>
+            <option value="12">焼酎</option>
+            <option value="13">飲み物その他</option>
           </optgroup>
           <optgroup label="おつまみ">
-            <option>肉系</option>
-            <option>魚介系</option>
-            <option>野菜系</option>
-            <option>チーズ系</option>
-            <option>おつまみその他</option>
+            <option value="14">肉系</option>
+            <option value="15">魚介系</option>
+            <option value="16">野菜系</option>
+            <option value="17">チーズ系</option>
+            <option value="18">おつまみその他</option>
           </optgroup>
         </select>
       </div>
 
       <div class="mb-3">
         <p>組み合わせ</p>
-        <label class="checkbox-inline"><input type="checkbox" value=""> エール系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> ラガー系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> 黒ビール系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> ビールその他</label>
+        <label class="checkbox-inline"><input type="checkbox" value="1"> エール系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="2"> ラガー系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="3"> 黒ビール系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="4"> ビールその他</label>
         <br>
-        <label class="checkbox-inline"><input type="checkbox" value=""> 赤</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> 白</label>
-        　 <label class="checkbox-inline"><input type="checkbox" value=""> ロゼ</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> スパークリング</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> ワインその他</label>
+        <label class="checkbox-inline"><input type="checkbox" value="5"> 赤</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="6"> 白</label>
+        　 <label class="checkbox-inline"><input type="checkbox" value="7"> ロゼ</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="8"> スパークリング</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="9"> ワインその他</label>
         <br>
-        <label class="checkbox-inline"><input type="checkbox" value=""> 日本酒</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> 果実酒</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> 焼酎</label>
-        　<label class="checkbox-inline"><input type="checkbox" value=""> 飲み物その他</label>
+        <label class="checkbox-inline"><input type="checkbox" value="10"> 日本酒</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="11"> 果実酒</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="12"> 焼酎</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="13"> 飲み物その他</label>
       </div>
 
       <div class="row">
 
         <div class="col-md-3 mb-3">
           <label for="alchol">アルコール度数</label>
-          <input type="text" class="form-control" id="alchol" placeholder="">
+          <input type="text" class="form-control" id="alchol" name="alchol" placeholder="">
         </div>
       </div>
       <div class="mb-3">
         <label for="price">価格</label>
-        <input type="text" name="price" class="form-control" id="peice" placeholder="" value="" required>
+        <input type="text" name="price" class="form-control" id="price" placeholder="" required>
         <div class="invalid-feedback">
           価格を入力してください。
         </div>
@@ -103,46 +110,35 @@
       <div class="mb-3">
         <div class="form-group">
           <label for="itemdetail">商品詳細</label>
-          <textarea class="form-control" id="itemdetail" rows="3"></textarea>
+          <textarea class="form-control" id="detail" rows="3" name ="detail"></textarea>
         </div>
       </div>
       <div class="mb-3">
         <div class="form-group">
           <label for="itemdetail">商品画像（ファイル名）:
           </label>
-           <input type="file" name="" size="">
+           <input type="file" name="file_name" size="">
         </div>
       </div>
      
              
-      </div>
+
 
       <hr class="mb-4">
       <div class="container automargin">
-      <button class="btn btn-info btn-lg" type="submit">　　入力確認画面へ進む　　</button>
-    </div>
+      <button class="btn btn-info btn-lg" type="submit" name="action">　　入力確認画面へ進む　　</button>
     </div>
  </form>
 </div>
+</div>
 
-
-  <br>
-  <br>
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted">Made by ayako</span>
-    </div> 
-  </footer>
 
 
     <!-- Bootstrap core JavaScript
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-      <script src="../../../../assets/js/vendor/popper.min.js"></script>
-      <script src="../../../../dist/js/bootstrap.min.js"></script>
-      <script src="../../../../assets/js/vendor/holder.min.js"></script>
+      
       <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -168,3 +164,4 @@
   </body>
   </html>
 
+    

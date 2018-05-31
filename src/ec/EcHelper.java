@@ -25,7 +25,7 @@ public class EcHelper {
 		// TOPページ
 		static final String TOP_PAGE = "/index.jsp";
 		// エラーページ
-		static final String ERROR_PAGE = "/error.jsp";
+		static final String ERROR_PAGE = "WEB-INF/jsp/error.jsp";
 		// 買い物かごページ
 		static final String CART_PAGE = "/cart.jsp";
 		// 購入
@@ -53,10 +53,11 @@ public class EcHelper {
 		// ユーザー新規登録完了
 		static final String REGIST_RESULT_PAGE = "/user-registresult.jsp";
 		//商品新規登録
-		static final String ITEM_REGIST_PAGE = "/itemregist.jsp";
+		static final String ITEM_REGIST_PAGE = "WEB-INF/jsp/itemregist.jsp";
 		//商品新規登録入力内容確認
-		static final String ITEM_REGIST_CONFIRM_PAGE = "/itemregistconfirm.jsp";
-		//
+		static final String ITEM_REGIST_CONFIRM_PAGE = "WEB-INF/jsp/itemregistconfirm.jsp";
+		//管理者ページ
+		static final String ADMIN_PAGE = "WEB-INF/jsp/adminpage.jsp";
 
 		public static EcHelper getInstance() {
 			return new EcHelper();

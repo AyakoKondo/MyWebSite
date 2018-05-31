@@ -2,9 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import base.DBManager;
 import beans.ItemDataBeans;
@@ -15,14 +13,50 @@ public class ItemDAO {
 	public static ItemDAO getInstance() {
 		return new ItemDAO();
 	}
-
 	/**
+	 * 商品の登録
+	 * @param 
+	 * @return <ItemDataBeans>
+	 * @throws SQLException
+	 */
+	public void registItem(ItemDataBeans idb) throws SQLException{
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			con = DBManager.getConnection();
+			st = con.prepareStatement("INSERT INTO m_item "
+					+ "(category_id,name,item_category_id,detail,alchol,price,file_name,create_date,update_date) "
+					+ "VALUES(?,?,?,?,?,?,?,now(),now())");
+			st.setInt	(1, idb.getCategoryId());
+			st.setString(2, idb.getName());
+			st.setInt	(3, idb.getItemCategoryId());
+			st.setString(4, idb.getDetail());
+			st.setString(5, idb.getAlchol());
+			st.setInt	(6, idb.getPrice());
+			st.setString(7, idb.getFileName());
+			st.executeUpdate();
+			System.out.println("inserting user has been completed");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+}
+	
+	
+	
+
+/*	/**
 	 * ランダムで引数指定分のItemDataBeansを取得
 	 * @param limit 取得したいかず
 	 * @return <ItemDataBeans>
 	 * @throws SQLException
 	 */
-	public static ArrayList<ItemDataBeans> getRandItem(int limit) throws SQLException {
+/*	public static ArrayList<ItemDataBeans> getRandItem(int limit) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -62,7 +96,7 @@ public class ItemDAO {
 	 * @return ItemDataBeans
 	 * @throws SQLException
 	 */
-	public static ItemDataBeans getItemByItemID(int itemId) throws SQLException {
+/*	public static ItemDataBeans getItemByItemID(int itemId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -94,7 +128,7 @@ public class ItemDAO {
 			}
 		}
 	}
-
+*/
 	/**
 	 * 商品検索
 	 * @param searchWord
@@ -103,7 +137,7 @@ public class ItemDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public ArrayList<ItemDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
+/*	public ArrayList<ItemDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -153,7 +187,7 @@ public class ItemDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static double getItemCount(String searchWord) throws SQLException {
+/*	public static double getItemCount(String searchWord) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -174,6 +208,5 @@ public class ItemDAO {
 				con.close();
 			}
 		}
-	}
+	}*/
 
-}
