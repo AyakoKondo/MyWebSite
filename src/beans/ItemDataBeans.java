@@ -12,7 +12,7 @@ public class ItemDataBeans implements Serializable {
 	private int price;
 	private String fileName;
 	
-	private int setId;
+	private String[] combiList;
 
 	public int getId() {
 		return id;
@@ -78,14 +78,15 @@ public class ItemDataBeans implements Serializable {
 		this.fileName = fileName;
 	}
 
-	public int getSetId() {
-		return setId;
+	public String[] getCombiList() {
+		return combiList;
 	}
 
-	public void setSetId(int setId) {
-		this.setId = setId;
+	public void setCombiList(String[] combiList) {
+		this.combiList = combiList;
 	}
-	
+
+
 }
 
 	

@@ -2,10 +2,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import base.DBManager;
 import beans.ItemDataBeans;
+import beans.ItemSetCategoryBeans;
 
 public class ItemDAO {
 
@@ -19,14 +21,15 @@ public class ItemDAO {
 	 * @return <ItemDataBeans>
 	 * @throws SQLException
 	 */
-	public void registItem(ItemDataBeans idb) throws SQLException{
+	public int registItem(ItemDataBeans idb) throws SQLException{
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
 			con = DBManager.getConnection();
 			st = con.prepareStatement("INSERT INTO m_item "
 					+ "(category_id,name,item_category_id,detail,alchol,price,file_name,create_date,update_date) "
-					+ "VALUES(?,?,?,?,?,?,?,now(),now())");
+					+ "VALUES(?,?,?,?,?,?,?,now(),now())", java.sql.Statement.RETURN_GENERATED_KEYS);
+			
 			st.setInt	(1, idb.getCategoryId());
 			st.setString(2, idb.getName());
 			st.setInt	(3, idb.getItemCategoryId());
@@ -35,7 +38,46 @@ public class ItemDAO {
 			st.setInt	(6, idb.getPrice());
 			st.setString(7, idb.getFileName());
 			st.executeUpdate();
-			System.out.println("inserting user has been completed");
+			System.out.println("inserting item has been completed");
+			
+			ResultSet rs =  st.getGeneratedKeys();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+		
+		return -1;
+	}
+	
+
+	
+	/**
+	 * 商品の組み合わせ登録
+	 * @param iscb ItemSetCategoryBeans
+	 *
+	 * @throws SQLException
+	 */
+	public static void setItemCategory(ItemSetCategoryBeans iscb) throws SQLException{
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			con = DBManager.getConnection();
+			st = con.prepareStatement("INSERT INTO t_set (item_id,set_category_id)"
+					+ "VALUES(?,?)");
+			st.setInt(1, iscb.getItemId());
+			st.setInt(2, iscb.getSetCategoryId());
+			st.executeUpdate();
+			System.out.println("inserting setItem has been completed");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 			throw new SQLException(e);
@@ -46,8 +88,6 @@ public class ItemDAO {
 		}
 	}
 }
-	
-	
 	
 
 /*	/**

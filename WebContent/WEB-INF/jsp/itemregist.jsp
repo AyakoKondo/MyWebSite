@@ -76,21 +76,21 @@
 
       <div class="mb-3">
         <p>組み合わせ</p>
-        <label class="checkbox-inline"><input type="checkbox" value="1"> エール系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="2"> ラガー系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="3"> 黒ビール系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="4"> ビールその他</label>
+        <label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="1"> エール系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="2"> ラガー系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="3"> 黒ビール系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="4"> ビールその他</label>
         <br>
-        <label class="checkbox-inline"><input type="checkbox" value="5"> 赤</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="6"> 白</label>
-        　 <label class="checkbox-inline"><input type="checkbox" value="7"> ロゼ</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="8"> スパークリング</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="9"> ワインその他</label>
+        <label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="5"> 赤</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="6"> 白</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="7"> ロゼ</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="8"> スパークリング</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="9"> ワインその他</label>
         <br>
-        <label class="checkbox-inline"><input type="checkbox" value="10"> 日本酒</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="11"> 果実酒</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="12"> 焼酎</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="13"> 飲み物その他</label>
+        <label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="10" > 日本酒</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="11"> 果実酒</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="12"> 焼酎</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="13"> 飲み物その他</label>
       </div>
 
       <div class="row">

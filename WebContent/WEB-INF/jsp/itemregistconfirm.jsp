@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.ItemDataBeans" %>
+<%@ page import="java.util.Arrays"%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -13,6 +14,7 @@
   <link href="Materialize/css/style.css" rel="stylesheet">
   <%
 	ItemDataBeans idb = (ItemDataBeans)request.getAttribute("idb");
+  	
   %>
 </head>
 
@@ -28,8 +30,8 @@
     <div class="col-md-8 userconfirm">
       <form class="needs-validation" action = "ItemRegistResult" method="POST">
        <div class="mb-3">
-        <label class="radio-inline"><input type="radio" name="category_id" value="<%=idb.getCategoryId() %>"> 飲み物</label>
-        　<label class="radio-inline"><input type="radio" name="category_id" value="<%=idb.getCategoryId() %>"> 食べ物</label>
+        <label class="radio-inline"><input type="radio" name="category_id" value="1" <% if(idb.getCategoryId()==1){ out.print("checked");} %>> 飲み物</label>
+        　<label class="radio-inline"><input type="radio" name="category_id" value="2" <% if(idb.getCategoryId()==2){ out.print("checked");} %>> 食べ物</label>
       </div>
 
       <div class="mb-3">
@@ -45,51 +47,52 @@
         <select class="selectpicker" name="item_category_id">
 
           <optgroup label="ビール">
-            <option value="<%=idb.getItemCategoryId()%>">エール系</option>
-            <option value="<%=idb.getItemCategoryId()%>">ラガー系</option>
-            <option value="<%=idb.getItemCategoryId()%>">黒ビール系</option>
-            <option value="<%=idb.getItemCategoryId()%>">ビールその他</option>
+            <option value="1" <% if(idb.getItemCategoryId()==1){ out.print("selected");} %>>エール系</option>
+            <option value="2" <% if(idb.getItemCategoryId()==2){ out.print("selected");} %>>ラガー系</option>
+            <option value="3" <% if(idb.getItemCategoryId()==3){ out.print("selected");} %>>黒ビール系</option>
+            <option value="4" <% if(idb.getItemCategoryId()==4){ out.print("selected");} %>>ビールその他</option>
           </optgroup>
           <optgroup label="ワイン">
-            <option value="<%=idb.getItemCategoryId()%>">赤</option>
-            <option value="<%=idb.getItemCategoryId()%>">白</option>
-            <option value="<%=idb.getItemCategoryId()%>">ロゼ</option>
-            <option value="<%=idb.getItemCategoryId()%>">スパークリング</option>
-            <option value="<%=idb.getItemCategoryId()%>">ワインその他</option>
+            <option value="5" <% if(idb.getItemCategoryId()==5){ out.print("selected");} %>>赤</option>
+            <option value="6" <% if(idb.getItemCategoryId()==6){ out.print("selected");} %>>白</option>
+            <option value="7" <% if(idb.getItemCategoryId()==7){ out.print("selected");} %>>ロゼ</option>
+            <option value="8" <% if(idb.getItemCategoryId()==8){ out.print("selected");} %>>スパークリング</option>
+            <option value="9" <% if(idb.getItemCategoryId()==9){ out.print("selected");} %>>ワインその他</option>
           </optgroup>
           <optgroup label="その他の飲み物">
-            <option value="<%=idb.getItemCategoryId()%>">日本酒</option>
-            <option value="<%=idb.getItemCategoryId()%>">果実酒</option>
-            <option value="<%=idb.getItemCategoryId()%>">焼酎</option>
-            <option value="<%=idb.getItemCategoryId()%>">飲み物その他</option>
+            <option value="10" <% if(idb.getItemCategoryId()==10){ out.print("selected");} %>>日本酒</option>
+            <option value="11" <% if(idb.getItemCategoryId()==11){ out.print("selected");} %>>果実酒</option>
+            <option value="12" <% if(idb.getItemCategoryId()==12){ out.print("selected");} %>>焼酎</option>
+            <option value="13" <% if(idb.getItemCategoryId()==13){ out.print("selected");} %>>飲み物その他</option>
           </optgroup>
           <optgroup label="おつまみ">
-            <option value="<%=idb.getItemCategoryId()%>">肉系</option>
-            <option value="<%=idb.getItemCategoryId()%>">魚介系</option>
-            <option value="<%=idb.getItemCategoryId()%>"> 野菜系</option>
-            <option value="<%=idb.getItemCategoryId()%>">チーズ系</option>
-            <option value="<%=idb.getItemCategoryId()%>">おつまみその他</option>
+            <option value="14" <% if(idb.getItemCategoryId()==14){ out.print("selected");} %>>肉系</option>
+            <option value="15" <% if(idb.getItemCategoryId()==15){ out.print("selected");} %>>魚介系</option>
+            <option value="16" <% if(idb.getItemCategoryId()==16){ out.print("selected");} %>> 野菜系</option>
+            <option value="17" <% if(idb.getItemCategoryId()==17){ out.print("selected");} %>>チーズ系</option>
+            <option value="18" <% if(idb.getItemCategoryId()==18){ out.print("selected");} %>>おつまみその他</option>
           </optgroup>
         </select>
       </div>
 
       <div class="mb-3">
+      
         <p>組み合わせ</p>
-        <label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> エール系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> ラガー系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 黒ビール系</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> ビールその他</label>
+        <label class="checkbox-inline"><input type="checkbox" value="1" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("1")){out.print("checked");} %>> エール系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="2" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("2")){out.print("checked");} %>> ラガー系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="3" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("3")){out.print("checked");} %>> 黒ビール系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="4" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("4")){out.print("checked");} %>> ビールその他</label>
         <br>
-        <label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 赤</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 白</label>
-        　 <label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> ロゼ</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> スパークリング</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> ワインその他</label>
+        <label class="checkbox-inline"><input type="checkbox" value="5" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("5")){out.print("checked");} %>> 赤</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="6" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("6")){out.print("checked");} %>> 白</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="7" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("7")){out.print("checked");} %>> ロゼ</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="8" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("8")){out.print("checked");} %>> スパークリング</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="9" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("9")){out.print("checked");} %>> ワインその他</label>
         <br>
-        <label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 日本酒</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 果実酒</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 焼酎</label>
-        　<label class="checkbox-inline"><input type="checkbox" value="<%=idb.getSetId()%>"> 飲み物その他</label>
+        <label class="checkbox-inline"><input type="checkbox" value="10" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("10")){out.print("checked");} %>> 日本酒</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="11" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("11")){out.print("checked");} %>> 果実酒</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="12" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("12")){out.print("checked");} %>> 焼酎</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="13" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("13")){out.print("checked");} %>> 飲み物その他</label>
       </div>
 
       <div class="row">
@@ -114,9 +117,8 @@
       </div>
       <div class="mb-3">
         <div class="form-group">
-          <label for="itemdetail">商品画像（ファイル名）:
-          </label>
-           <input type="file" name="file_name" size="" value="<%=idb.getFileName() %>" readonly>
+          <label for="itemdetail">商品画像（ファイル名）:</label>
+           <input type="text" name="file_name" readonly class="form-control-plaintext"  value="<%=idb.getFileName() %>">
         </div>
       </div>
      
