@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans" %>
+<%@ page import="java.util.Arrays"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dao.ItemDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -10,6 +15,8 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">	
   <link href="Materialize/css/sticky-footer.css" rel="stylesheet">
   <link href="Materialize/css/style.css" rel="stylesheet">
+
+
 </head>
 
 
@@ -18,7 +25,7 @@
   <div class="container-admin automargin">
 
     <div class="py-5 text-center none">
-      <h2>商品一覧（管理者用）<a href="itemregist.html"><button class="btn btn-primary" type="submit">新規商品登録</button></a></h2>
+      <h2>商品一覧（管理者用）<a href="ItemRegist"><button class="btn btn-primary" type="submit">新規商品登録</button></a></h2>
     </div>
 
     <form>
@@ -29,27 +36,27 @@
         </div>
         <div class="form-group col-md-6">
           <p>　商品の種類</p>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> エール系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> ラガー系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 黒ビール系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> ビールその他</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="1" name="item_category_id"> エール系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="2" name="item_category_id"> ラガー系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="3" name="item_category_id"> 黒ビール系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="4" name="item_category_id"> ビールその他</label>
           <br>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 赤</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 白</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> ロゼ</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> スパークリング</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> ワインその他</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="5" name="item_category_id"> 赤</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="6" name="item_category_id"> 白</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="7" name="item_category_id"> ロゼ</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="8" name="item_category_id"> スパークリング</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="9" name="item_category_id"> ワインその他</label>
           <br>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 日本酒</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 果実酒</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 焼酎</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 飲み物その他</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="10" name="item_category_id"> 日本酒</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="11" name="item_category_id"> 果実酒</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="12" name="item_category_id"> 焼酎</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="13" name="item_category_id"> 飲み物その他</label>
           <br>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 肉系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 魚介系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 野菜系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> チーズ系</label>
-          　<label class="checkbox-inline"><input type="checkbox" value=""> 食べ物その他</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="14" name="item_category_id"> 肉系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="15" name="item_category_id"> 魚介系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="16" name="item_category_id"> 野菜系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="17" name="item_category_id"> チーズ系</label>
+          　<label class="checkbox-inline"><input type="checkbox" value="18" name="item_category_id"> 食べ物その他</label>
         </div>
       </div>
       <div class="form-group row">
@@ -84,15 +91,17 @@
         </tr>
       </thead>
       <tbody>
+      <c:forEach var="idb" items="${itemList}">
         <tr>
-          <td>2018年5月10日 13時34分</td>
-          <td>おいしいのみもの</td>
-          <td>赤</td>
-          <td>580円</td>
+          <td>${idb.createDate}</td>
+          <td>${idb.name}</td>
+          <td>${idb.itemCategoryName}</td>
+          <td>${idb.price}円</td>
           <td><a href="itemdetail.html"><button type="button" class="btn btn-secondary button-regist">詳細</button></a>
           	<a href="itemupdate.html"><button type="button" class="btn btn-primary button-regist">更新</button></a>
-            <a href="itemdelete.html"><button type="button" class="btn btn-danger">削除</button></a></td>
+            <a href="ItemDelete"><button type="button" class="btn btn-danger">削除</button></a></td>
           </tr>
+         </c:forEach>
         </tbody>
       </table>
     </div>

@@ -1,3 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.ItemDataBeans" %>
+<%@ page import="java.util.Arrays"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dao.ItemDAO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -17,16 +24,18 @@
 
     <div class="py-5 text-center">
       <h2>商品削除確認（管理者用）</h2>
-    　<h3>商品名　　を本当に削除しますか？</h3>
+    　<h3>${idb.name}を本当に削除しますか？</h3>
   </div>
 
     <div class="container automargin">
         <div class="row">
           <div class="center-align">
-            <a href="adminpage.html"><button class="btn btn-primary btn-lg  button-rc" type="submit" name="confirm_button" value="cancel">　やめる　</button></a>
+            <a href="Adminpage"><button class="btn btn-primary btn-lg  button-rc" type="submit" name="confirm_button" value="cancel">　やめる　</button></a>
           </div>
           <div class="center-align">
-            <a href="adminpage.html"><button class="btn btn-danger btn-lg" type="submit" name="confirm_button" value="cancel">　削除する　</button></a>
+          <form action = "ItemDelete" method ="post">
+            <button class="btn btn-danger btn-lg" type="submit" name="confirm_button" value="delete">　削除する　</button>
+           </form>
           </div>
         </div>
         </div>

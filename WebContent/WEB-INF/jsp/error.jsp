@@ -11,6 +11,10 @@
   <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">	
   <link href="Materialize/css/sticky-footer.css" rel="stylesheet">
   <link href="Materialize/css/style.css" rel="stylesheet">
+  
+  <%
+	String errorMessage = (String) request.getAttribute("errorMessage");
+%>
 </head>
 
 
@@ -64,7 +68,7 @@
     <div class="error">
      <div class="alert alert-danger" role="alert">
       <h4 class="alert-heading">システムエラーが発生しました</h4>
-      <p>エラーメッセージ</p>
+      <p><%=errorMessage %></p>
       
     </div>
   </div>

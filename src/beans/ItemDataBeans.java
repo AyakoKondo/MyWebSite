@@ -1,6 +1,8 @@
 package beans;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ItemDataBeans implements Serializable {
 	private int id;
@@ -11,8 +13,24 @@ public class ItemDataBeans implements Serializable {
 	private String alchol;
 	private int price;
 	private String fileName;
+	private Date createDate;
+	private Date updateDate;
 	
 	private String[] combiList;
+	
+	private String itemCategoryName;
+	
+	public ItemDataBeans() {
+	}
+
+	public ItemDataBeans(int id, String name,String itemCategoryName,int price,Date createDate) {
+		this.id = id;
+		this.name = name;
+		this.itemCategoryName = itemCategoryName;
+		this.price = price;
+		this.createDate = createDate;
+	}
+
 
 	public int getId() {
 		return id;
@@ -84,6 +102,39 @@ public class ItemDataBeans implements Serializable {
 
 	public void setCombiList(String[] combiList) {
 		this.combiList = combiList;
+	}
+
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getItemCategoryName() {
+		return itemCategoryName;
+	}
+
+	public void setItemCategoryName(String itemCategoryName) {
+		this.itemCategoryName = itemCategoryName;
+	}
+	public String getFormatDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+		return sdf.format(createDate);
+	}
+	public String getFormatDate2() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH時mm分");
+		return sdf.format(updateDate);
 	}
 
 

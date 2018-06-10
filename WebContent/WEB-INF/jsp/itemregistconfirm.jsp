@@ -93,6 +93,12 @@
         　<label class="checkbox-inline"><input type="checkbox" value="11" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("11")){out.print("checked");} %>> 果実酒</label>
         　<label class="checkbox-inline"><input type="checkbox" value="12" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("12")){out.print("checked");} %>> 焼酎</label>
         　<label class="checkbox-inline"><input type="checkbox" value="13" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("13")){out.print("checked");} %>> 飲み物その他</label>
+        <br>
+        <label class="checkbox-inline"><input type="checkbox" value="14" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("14")){out.print("checked");} %>> 肉系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="15" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("15")){out.print("checked");} %>> 魚介系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="16" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("16")){out.print("checked");} %>> 野菜系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="17" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("17")){out.print("checked");} %>> チーズ系</label>
+        　<label class="checkbox-inline"><input type="checkbox" value="18" name="set_category_id" <% if(Arrays.asList(idb.getCombiList()).contains("18")){out.print("checked");} %>> おつまみその他</label>
       </div>
 
       <div class="row">

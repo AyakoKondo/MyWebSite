@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import base.DBManager;
 import beans.ItemDataBeans;
-import beans.ItemSetCategoryBeans;
 
 public class ItemDAO {
 
@@ -59,37 +60,48 @@ public class ItemDAO {
 		return -1;
 	}
 	
-
-	
 	/**
-	 * 商品の組み合わせ登録
-	 * @param iscb ItemSetCategoryBeans
-	 *
+	 * 商品の削除
+	 * @param id
+	 * @return
 	 * @throws SQLException
 	 */
-	public static void setItemCategory(ItemSetCategoryBeans iscb) throws SQLException{
-		Connection con = null;
-		PreparedStatement st = null;
-		try {
-			con = DBManager.getConnection();
-			st = con.prepareStatement("INSERT INTO t_set (item_id,set_category_id)"
-					+ "VALUES(?,?)");
-			st.setInt(1, iscb.getItemId());
-			st.setInt(2, iscb.getSetCategoryId());
-			st.executeUpdate();
-			System.out.println("inserting setItem has been completed");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			throw new SQLException(e);
-		} finally {
-			if (con != null) {
-				con.close();
-			}
-		}
-	}
-}
+	public void deleteItem(String id) {
+		 Connection conn = null;
+	    try {
+	        // データベースへ接続
+	        conn = DBManager.getConnection();
 	
-
+	        // delete文を準備
+	        String sql = "DELETE FROM t_item WHERE id = ?";
+	
+	         // deleteを実行	       
+	        PreparedStatement pStmt = conn.prepareStatement(sql);
+	       
+	        pStmt.setString(1, id);
+	        
+	        int result = pStmt.executeUpdate();
+	        System.out.println(result);
+	       
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        
+	    } finally {
+	        // データベース切断
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	              
+	            }
+	        }
+	    }
+	}
+	
+	
+	 
+	 
 /*	/**
 	 * ランダムで引数指定分のItemDataBeansを取得
 	 * @param limit 取得したいかず
@@ -136,7 +148,7 @@ public class ItemDAO {
 	 * @return ItemDataBeans
 	 * @throws SQLException
 	 */
-/*	public static ItemDataBeans getItemByItemID(int itemId) throws SQLException {
+	public static ItemDataBeans getItemByItemID(int itemId) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -168,7 +180,7 @@ public class ItemDAO {
 			}
 		}
 	}
-*/
+
 	/**
 	 * 商品検索
 	 * @param searchWord
@@ -250,3 +262,51 @@ public class ItemDAO {
 		}
 	}*/
 
+	/**
+	 * 全ての商品情報を取得(一覧用）
+	 *
+	 * @param 
+	 * @return itemDataBeans
+	 * @throws SQLException
+	 */
+	
+	public static ArrayList<ItemDataBeans> findAll() throws SQLException{
+		Connection con = null;
+		PreparedStatement st = null;
+		ArrayList<ItemDataBeans> itemList = new ArrayList<ItemDataBeans>();
+		
+		try {
+			//DBへ接続
+			con = DBManager.getConnection();
+			
+			//SELECT文を準備
+			st = con.prepareStatement( "SELECT * FROM m_item join m_item_category on m_item.item_category_id = m_item_category.id");
+			
+			//SELECT文を実行し、結果表を取得
+			
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {        	
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String itemCategoryName = rs.getString("m_item_category.name");
+				int price = rs.getInt("price");
+				Timestamp createDate = rs.getTimestamp("create_date");
+				
+				ItemDataBeans idb = new ItemDataBeans(id,name,itemCategoryName,price,createDate);
+				
+				itemList.add(idb);
+            	}
+			} catch (SQLException e) {
+				e.printStackTrace();
+	            return null;
+			} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+		System.out.println("getAllItem completed");
+        return itemList;
+	}
+	
+}

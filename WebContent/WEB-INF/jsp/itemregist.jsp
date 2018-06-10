@@ -91,6 +91,12 @@
         　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="11"> 果実酒</label>
         　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="12"> 焼酎</label>
         　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="13"> 飲み物その他</label>
+        <br>
+        <label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="14" > 肉系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="15"> 魚介系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="16"> 野菜系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="17"> チーズ系</label>
+        　<label class="checkbox-inline"><input type="checkbox" name="set_category_id" value="18"> おつまみその他</label>
       </div>
 
       <div class="row">
