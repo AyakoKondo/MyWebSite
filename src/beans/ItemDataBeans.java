@@ -31,6 +31,13 @@ public class ItemDataBeans implements Serializable {
 		this.createDate = createDate;
 	}
 
+	public ItemDataBeans(int id,String name,int price,String fileName,int itemCategoryId) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.fileName = fileName;
+		this.itemCategoryId = itemCategoryId;
+	}
 
 	public int getId() {
 		return id;

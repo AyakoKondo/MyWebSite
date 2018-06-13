@@ -7,15 +7,15 @@
 <head>
 <jsp:include page="/baselayout/head.html" />
 	<title>商品詳細</title>
-  <%
-	ItemDataBeans item = (ItemDataBeans) request.getAttribute("item");
+   <%
+   ItemDataBeans item = (ItemDataBeans) request.getAttribute("item");
   	ArrayList<ItemDataBeans> combiList = (ArrayList<ItemDataBeans>) request.getAttribute("combiList");
   %>
 </head>
 
+
 <body class="text-center">
 <jsp:include page="/baselayout/header.jsp" />
-  
 
   <!--商品詳細-->
   <main role="main">
@@ -31,19 +31,17 @@
   </div>
   <div class="container">
       <div class="row center">
-        <div class="col-sm-2"></div>
+       <div class="col-sm-2"></div>
         <div class="col-sm-3">
           <div class="itemcard itemdetail">
-            <img class="card-img-top mx-auto" src="<%="Materialize/item/" + item.getFileName()%>" alt="お酒">
+            <img class="card-img-top mx-auto" src="<%="Materialize/item/" + item.getFileName()%>" alt="おつまみ">
          </div>
        </div>
-          <div class="col-sm-4 text-left">
+          <div class="col-sm-6 text-left">
           <h4><%=item.getName() %></h4>
           <br>
           <h4><%=item.getPrice() %>円</h4>
           <p><%=item.getDetail() %></p>
-          <p>アルコール度数：<%=item.getAlchol()%></p>
-          
         </div>
         </div>
       </div>
@@ -53,15 +51,15 @@
   <div class="container">
     <div class="album py-5">
       <div class="container-origin">
-        <h5><i class="fas fa-utensils fa-fw"></i>おすすめおつまみ</h5>
+        <h5><i class="fas fa-beer fa-fw"></i>おすすめのみもの</h5>
         <br>
         <div class="row">
-        		<%
+       		    <%
 					for (ItemDataBeans idb : combiList) {
 				%>
           <div class="col-md-3">
             <div class="card mb-3 box-shadow">
-              <a href="FoodItem?item_id=<%=idb.getId()%>&item_category_id=<%=idb.getItemCategoryId()%>"> <img class="card-img-top"  src="<%="Materialize/item/" + idb.getFileName()%>" alt="Card image cap"></a>
+              <a href="Item?item_id=<%=idb.getId()%>&item_category_id=<%=idb.getItemCategoryId()%>"> <img class="card-img-top" src="<%="Materialize/item/" + idb.getFileName()%>" alt="Card image cap"></a>
               <div class="card-body">
                 <p class="card-text"><%=idb.getName() %></p>
                 <p class="card-text"><%=idb.getPrice() %>円</p>
@@ -75,18 +73,20 @@
               </div>
             </div>
           </div>
-         <%
+           <%
 			}
-		 %>
-     
-        </div>
-       </div>
-      </div>
-     </div>
+		   %>
+          
+                </div>
+              </div>
+            </div>
+          </div>
+
 
       </main>
       <br><br><br>
-     <jsp:include page="/baselayout/footer.jsp" />
+      <jsp:include page="/baselayout/footer.jsp" />
+
 
     </body>
     </html>

@@ -16,7 +16,7 @@
 <body class="text-center">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index.html"><img src="Materialize/illust/logo.png" width="125px" height="70px"></a>
+    <a class="navbar-brand" href="Index"><img src="Materialize/illust/logo.png" width="125px" height="70px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,7 +27,7 @@
             検索する
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="beer-search.html">ビールから <i class="fas fa-beer"></i></a>
+            <a class="dropdown-item" href="BeerSearch">ビールから <i class="fas fa-beer"></i></a>
             <a class="dropdown-item" href="wine-search.html">ワインから <i class="fas fa-glass-martini"></i></a>
             <a class="dropdown-item" href="other-liquor.html">その他のお酒から</a>
             <a class="dropdown-item" href="food-search.html">おつまみから <i class="fas fa-utensils"></i></a>

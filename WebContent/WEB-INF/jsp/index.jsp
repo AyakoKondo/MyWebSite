@@ -9,10 +9,9 @@
  <jsp:include page="/baselayout/head.html" />
  <%
 	ArrayList<ItemDataBeans> itemList = (ArrayList<ItemDataBeans>) request.getAttribute("itemList");
- 	ArrayList<ItemDataBeans> itemCombiList = (ArrayList<ItemDataBeans>) request.getAttribute("itemCombiList");
+ 	ArrayList<ItemDataBeans> combiList = (ArrayList<ItemDataBeans>) request.getAttribute("combiList");
 %>
 </head>
-
 
 <body class="text-center">
  <jsp:include page="/baselayout/header.jsp" />
@@ -45,11 +44,12 @@
         <div class="col-sm">
           <div class="card " style="width: 18rem;">
 
-            <a href="Item?item_id=<%=item.getId()%>"><img class="card-img-top mx-auto" src="<%="Materialize/item/" + item.getFileName()%>" alt="お酒"></a>
+			<a href="Item?item_id=<%=item.getId()%>&item_category_id=<%=item.getItemCategoryId() %>"><img class="card-img-top mx-auto" src="<%="Materialize/item/" + item.getFileName()%>" alt="お酒"></a>
             <div class="card-body">
               <h5 class="card-title"><%=item.getName()%></h5>
               <p class="card-text"><%=item.getPrice()%>円</p>
             <%} %>
+            
             </div>
           </div>
         </div>
@@ -59,12 +59,12 @@
         <div class="col-sm">
           <div class="card" style="width: 18rem;">
           		<%
-					for (ItemDataBeans itemCombi : itemCombiList) {
+					for (ItemDataBeans idb : combiList) {
 				%>
-            <a href="FoodItem?item_id=<%=itemCombi.getId()%>"><img class="card-img-top mx-auto" src="<%="Materialize/item/" + itemCombi.getFileName()%>" alt="おつまみ"></a>
+            <a href="FoodItem?item_id=<%=idb.getId()%>&item_category_id=<%=idb.getItemCategoryId() %>"><img class="card-img-top mx-auto" src="<%="Materialize/item/" + idb.getFileName()%>" alt="おつまみ"></a>
             <div class="card-body">
-              <h5 class="card-title"><%=itemCombi.getName()%></h5>
-              <p class="card-text"><%=itemCombi.getPrice()%>円</p>
+              <h5 class="card-title"><%=idb.getName()%></h5>
+              <p class="card-text"><%=idb.getPrice()%>円</p>
               <%} %>
             </div>
           </div>
@@ -77,7 +77,7 @@
    <div class="container">
       <div class="row center">
          <div class="col-sm">
-          <a href="beer-search.html"><img src="Materialize/illust/beer.png"></a>
+          <a href="BeerSearch"><img src="Materialize/illust/beer.png"></a>
           </div>
           <div class="col-sm">
           <a href="wine-search.html"><img src="Materialize/illust/wine.png"></a>

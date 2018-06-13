@@ -17,11 +17,15 @@ import beans.ItemDataBeans;
 
 public class EcHelper {
 	// 検索結果
-		static final String SEARCH_RESULT_PAGE = "/searchresult.jsp";
+		static final String SEARCH_RESULT_PAGE = "WEB-INF/jsp/searchresult.jsp";
+		// カテゴリー別検索結果
+		static final String SEARCH_CATEGORY_PAGE = "WEB-INF/jsp/searchcategory.jsp";
 		// のみもの商品ページ
-		static final String ITEM_PAGE = "/item.jsp";
+		static final String ITEM_PAGE = "WEB-INF/jsp/item.jsp";
 		//食べ物商品ページ
-		static final String ITEM_FOOD_PAGE = "/fooditem.jsp";
+		static final String ITEM_FOOD_PAGE = "WEB-INF/jsp/fooditem.jsp";
+		//ビールページ
+		static final String BEER_PAGE = "WEB-INF/jsp/beer-search.jsp";
 		// TOPページ
 		static final String TOP_PAGE = "WEB-INF/jsp/index.jsp";
 		// エラーページ

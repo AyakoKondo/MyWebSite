@@ -128,6 +128,7 @@ public class ItemDAO {
 				item.setDetail(rs.getString("detail"));
 				item.setPrice(rs.getInt("price"));
 				item.setFileName(rs.getString("file_name"));
+				item.setItemCategoryId(rs.getInt("item_category_id"));
 				itemList.add(item);
 			}
 			System.out.println("getItem completed");
@@ -143,8 +144,8 @@ public class ItemDAO {
 	}
 	
 	/**
-	 * ランダムで引数指定分のItemDataBeansを取得(飲み物に基づくおつまみの組み合わせ
-	 * @param limit 取得したいかず
+	 * ランダムで引数指定分のItemDataBeansを取得 食べ物のみ
+	 * @param limit 取得したいかず 
 	 * @return <ItemDataBeans>
 	 * @throws SQLException
 	 */
@@ -168,6 +169,7 @@ public class ItemDAO {
 				itemCombi.setDetail(rs.getString("detail"));
 				itemCombi.setPrice(rs.getInt("price"));
 				itemCombi.setFileName(rs.getString("file_name"));
+				itemCombi.setItemCategoryId(rs.getInt("item_category_id"));
 				itemCombiList.add(itemCombi);
 			}
 			System.out.println("getItem completed");
@@ -208,6 +210,7 @@ public class ItemDAO {
 				item.setPrice(rs.getInt("price"));
 				item.setFileName(rs.getString("file_name"));
 				item.setAlchol(rs.getString("alchol"));
+				item.setItemCategoryId(rs.getInt("item_category_id"));
 			}
 
 			System.out.println("searching item by itemID has been completed");
@@ -222,7 +225,93 @@ public class ItemDAO {
 			}
 		}
 	}
+	/**
+	 * 商品IDによる組み合わせ商品(ランダム表示）商品詳細画面で表示
+	 * @param itemCategoryId,limit
+	 * @return ArrayList<ItemDataBeans>
+	 * @throws SQLException
+	 */
+	public static ArrayList<ItemDataBeans> getCombiList(int itemCombiId,int limit) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		ArrayList<ItemDataBeans> combiList = new ArrayList<ItemDataBeans>();
+	
+		try {
+			con = DBManager.getConnection();
 
+			st = con.prepareStatement("SELECT * FROM m_item JOIN t_set ON m_item.id = t_set.item_id WHERE t_set.set_category_id = ? ORDER BY RAND() LIMIT ? ");
+			st.setInt(1, itemCombiId);
+			st.setInt(2, limit);
+
+			ResultSet rs = st.executeQuery();
+			
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int price = rs.getInt("price");
+				String fileName = rs.getString("file_name");
+				int itemCategoryId = rs.getInt("item_category_id");
+				
+				ItemDataBeans idb = new ItemDataBeans(id,name,price,fileName,itemCategoryId);
+				combiList.add(idb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+            return null;
+		} finally {
+			if (con != null) {
+			con.close();
+			}
+		}
+		System.out.println("getAllItem completed");
+		return combiList;
+	}
+	
+	/**
+	 * 商品カテゴリIDによる商品検索
+	 * @param itemCategoryId
+	 * @return ItemDataBeans
+	 * @throws SQLException
+	 */
+	public ArrayList<ItemDataBeans> getItemByItemCategoryID(int itemCategoryId,int pageNum,int pageMaxItemCount) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			int startiItemNum = (pageNum - 1) * pageMaxItemCount;
+			con = DBManager.getConnection();
+
+			st = con.prepareStatement("SELECT * FROM m_item WHERE item_category_id = ? ORDER BY id ASC LIMIT?,?");
+			st.setInt(1, itemCategoryId);
+			st.setInt(2, startiItemNum);
+			st.setInt(3, pageMaxItemCount);
+
+			ResultSet rs = st.executeQuery();
+
+			ArrayList<ItemDataBeans> itemList = new ArrayList<ItemDataBeans>();
+			while (rs.next()) {
+				ItemDataBeans item = new ItemDataBeans();
+				item.setId(rs.getInt("id"));
+				item.setName(rs.getString("name"));
+				item.setDetail(rs.getString("detail"));
+				item.setPrice(rs.getInt("price"));
+				item.setFileName(rs.getString("file_name"));
+				item.setAlchol(rs.getString("alchol"));
+				item.setItemCategoryId(rs.getInt("item_category_id"));
+				itemList.add(item);
+			}
+
+			System.out.println("searching item by itemCategoryID has been completed");
+
+			return itemList;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
 	/**
 	 * 商品検索
 	 * @param searchWord
@@ -231,7 +320,7 @@ public class ItemDAO {
 	 * @return
 	 * @throws SQLException
 	 */
-/*	public ArrayList<ItemDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
+	public ArrayList<ItemDataBeans> getItemsByItemName(String searchWord, int pageNum, int pageMaxItemCount) throws SQLException {
 		Connection con = null;
 		PreparedStatement st = null;
 		try {
@@ -303,6 +392,36 @@ public class ItemDAO {
 			}
 		}
 	}*/
+	/**
+	 * 商品総数を取得(カテゴリ別）
+	 *
+	 * @param itemCategoryId
+	 * @return
+	 * @throws SQLException
+	 */
+	public static double getItemCount(int itemCategoryId) throws SQLException {
+		Connection con = null;
+		PreparedStatement st = null;
+		try {
+			con = DBManager.getConnection();
+			st = con.prepareStatement("SELECT COUNT(*) AS cnt FROM m_item WHERE item_category_id= ?");
+			st.setInt(1, itemCategoryId);
+			ResultSet rs = st.executeQuery();
+			double coung = 0.0;
+			while (rs.next()) {
+				coung = Double.parseDouble(rs.getString("cnt"));
+			}
+			return coung;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			throw new SQLException(e);
+		} finally {
+			if (con != null) {
+				con.close();
+			}
+		}
+	}
+
 
 	/**
 	 * 全ての商品情報を取得(一覧用）
@@ -322,7 +441,7 @@ public class ItemDAO {
 			con = DBManager.getConnection();
 			
 			//SELECT文を準備
-			st = con.prepareStatement( "SELECT * FROM m_item join m_item_category on m_item.item_category_id = m_item_category.id order by create_date desc");
+			st = con.prepareStatement( "SELECT * FROM m_item JOIN m_item_category ON m_item.item_category_id = m_item_category.id ORDER BY create_date DESC");
 			
 			//SELECT文を実行し、結果表を取得
 			

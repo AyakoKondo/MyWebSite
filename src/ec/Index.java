@@ -26,12 +26,14 @@ public class Index extends HttpServlet {
 		try {
 
 			//商品情報を取得
-			ArrayList<ItemDataBeans>itemList = ItemDAO.getRandItem(1);
-			ArrayList<ItemDataBeans>itemCombiList = ItemDAO.getRandCombiItem(1);
-
+			ArrayList<ItemDataBeans>itemList = ItemDAO.getRandItem(1);	
+			int categoryId = itemList.get(0).getItemCategoryId();
+			
+			ArrayList<ItemDataBeans> combiList = ItemDAO.getCombiList(categoryId, 1);
+			
 			//リクエストスコープにセット
 			request.setAttribute("itemList", itemList);
-			request.setAttribute("itemCombiList", itemCombiList);
+			request.setAttribute("combiList", combiList);
 
 //			//セッションにsearchWordが入っていたら破棄する
 //			String searchWord = (String)session.getAttribute("searchWord");

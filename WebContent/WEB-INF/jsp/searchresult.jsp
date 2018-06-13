@@ -179,7 +179,7 @@
   </div>
   
 
-</div>
+
 <br><br><br>
 <footer class="footer">
   <div class="container">

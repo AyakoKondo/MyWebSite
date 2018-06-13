@@ -14,15 +14,14 @@ import beans.ItemDataBeans;
 import dao.ItemDAO;
 
 /**
- * Servlet implementation class Item
+ * Servlet implementation class FoodItem
  */
-@WebServlet("/Item")
-public class Item extends HttpServlet {
+@WebServlet("/FoodItem")
+public class FoodItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
 	/**
-	 * @商品詳細画面
+	 * @商品詳細画面(食べ物編）
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -40,11 +39,12 @@ public class Item extends HttpServlet {
 			request.setAttribute("item", item);
 			request.setAttribute("combiList", combiList);
 			
-			request.getRequestDispatcher(EcHelper.ITEM_PAGE).forward(request, response);
+			request.getRequestDispatcher(EcHelper.ITEM_FOOD_PAGE).forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("errorMessage", e.toString());
 			response.sendRedirect("Error");
 		}
 	}
+
 }
