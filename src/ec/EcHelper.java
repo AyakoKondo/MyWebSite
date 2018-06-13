@@ -23,7 +23,7 @@ public class EcHelper {
 		//食べ物商品ページ
 		static final String ITEM_FOOD_PAGE = "/fooditem.jsp";
 		// TOPページ
-		static final String TOP_PAGE = "/index.jsp";
+		static final String TOP_PAGE = "WEB-INF/jsp/index.jsp";
 		// エラーページ
 		static final String ERROR_PAGE = "WEB-INF/jsp/error.jsp";
 		// 買い物かごページ

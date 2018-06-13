@@ -34,7 +34,9 @@
           </div>
           <div class="center-align">
           <form action = "ItemDelete" method ="post">
+          
             <button class="btn btn-danger btn-lg" type="submit" name="confirm_button" value="delete">　削除する　</button>
+            <input type="hidden" name ="id" value = "${idb.id}">
            </form>
           </div>
         </div>

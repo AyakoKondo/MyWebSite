@@ -116,7 +116,7 @@
       <div class="mb-3">
         <div class="form-group">
           <label for="itemdetail">商品詳細</label>
-          <textarea class="form-control" id="detail" rows="3" name ="detail"></textarea>
+          <textarea class="form-control" id="detail" rows="5" name ="detail"></textarea>
         </div>
       </div>
       <div class="mb-3">

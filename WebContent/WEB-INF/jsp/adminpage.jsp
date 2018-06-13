@@ -94,12 +94,12 @@
       <c:forEach var="idb" items="${itemList}">
         <tr>
           <td>${idb.createDate}</td>
-          <td>${idb.name}</td>
+          <td><div class="abbr">${idb.name}</div></td>
           <td>${idb.itemCategoryName}</td>
           <td>${idb.price}円</td>
           <td><a href="itemdetail.html"><button type="button" class="btn btn-secondary button-regist">詳細</button></a>
           	<a href="itemupdate.html"><button type="button" class="btn btn-primary button-regist">更新</button></a>
-            <a href="ItemDelete"><button type="button" class="btn btn-danger">削除</button></a></td>
+            <a href="ItemDelete?id=${idb.id}"><button type="button" class="btn btn-danger">削除</button></a></td>
           </tr>
          </c:forEach>
         </tbody>
@@ -136,6 +136,14 @@
         }, false);
       })();
     </script>
+	    <script>
+	    $(".abbr").each(function(){
+	    var txt = $(this).text();
+	    if(txt.length > 30){
+	        txt = txt.substr(0, 30);
+	        $(this).text(txt + "･･･");
+	    }
+	});</script>
   </body>
   </html>
 
